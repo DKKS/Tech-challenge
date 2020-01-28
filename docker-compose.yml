@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+
+  # local development (watches files)
+  develop:
+    build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          - LASTCOMMIT
+    ports:
+      - 9085:8081
+    volumes:
+      - .:/workspace
+
+  # jest tests
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace
+    command: "npm test"
+    environment:
+      - LASTCOMMIT

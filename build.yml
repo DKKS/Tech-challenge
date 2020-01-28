@@ -1,0 +1,5 @@
+# Application settings
+application:
+  name: myapplication
+  description: pre-interview technical test
+  version: "1.0"
