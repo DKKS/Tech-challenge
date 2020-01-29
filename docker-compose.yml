@@ -24,3 +24,16 @@ services:
     command: "npm test"
     environment:
       - LASTCOMMIT
+
+      # production container
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - LASTCOMMIT
+    volumes:
+      - .:/workspace
+    ports:
+      - 9085:8080
+    command: "node app.bundle.js"
